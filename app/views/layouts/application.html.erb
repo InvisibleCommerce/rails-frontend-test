@@ -13,8 +13,10 @@
 
   <body class="h-full bg-zinc-100">
     <main>
-      <div class="fixed inset-y-0 w-[284px] bg-zinc-800"></div>
-      <%= yield %>
+      <div class="fixed inset-y-0 flex flex-col w-[284px] bg-zinc-800"></div>
+      <div class="ml-[284px] my-4 mr-4">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
