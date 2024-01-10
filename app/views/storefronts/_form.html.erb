@@ -11,33 +11,26 @@
     </div>
   <% end %>
 
-  <div>
-    <div
-      class="return-reason-container"
-    >
-      <template hidden data-nested-form-target="template">
-        <%= form.simple_fields_for :reasons, Reason.new, child_index: 'NEW_RECORD' do |reason_fields| %>
-          <%= render 'reason', f: reason_fields %>
-        <% end %>
-      </template>
-
-      <button type="button" data-action="nested-form#addAssociation" class="btn">
-        <i class="add-icon"></i> Add Return Reason
-      </button>
+  <div class="return-reason-container">
+    <ul class="divide-y divide-gray-300 overflow-hidden bg-gray-50 shadow-sm rounded-xl border">
+      <li>
+        <button type="button" class="p-4 justify-start items-center grow shrink gap-4 inline-flex w-full">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#3164F6"/><g fill="#fff"><path d="M17 10.998H7a1 1 0 0 0 0 2h10a1 1 0 1 0 0-2Z"/><path d="M11 7v10a1 1 0 1 0 2 0V7a1 1 0 1 0-2 0Z"/></g></svg>
+          <i class="add-icon"></i> <span class="text-blue-600 text-base font-semibold leading-snug">Add Return Reason</span>
+        </button>
+      </li>
       <%= form.simple_fields_for :reasons, @storefront.reasons.ordered do |reason_fields| %>
         <%= render 'reason', f: reason_fields %>
       <% end %>
-
-      <div hidden data-nested-form-target="addItem"></div>
-    </div>
+    </ul>
   </div>
 
-  <div>
-    <div>
-      Remember to save your changes before leaving this page
-    </div>
-    <div>
-      <%= form.submit 'Save', class: 'btn-primary' %>
+  <div class="fixed bg-white bottom-0 left-[284px]">
+    <div class="pl-6 pr-4 py-4 bg-white shadow justify-between items-center inline-flex">
+      <div class="text-black text-sm font-medium leading-tight">Remember to save your changes before leaving this page</div>
+      <div class="px-6 py-3.5 bg-amber-400 rounded-lg justify-center items-center gap-1 flex">
+        <%= form.submit 'Save' %>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,29 +1,46 @@
-<div class="nested-form-wrapper">
+<!--<div class="nested-form-wrapper">
   <div class="dashboard-form-fields">
-    <%=
+    <%
       f.input :label,
         label: 'Displayed reason',
         required: true,
         placeholder: 'Enter Displayed reason...',
         hint: "Provide a friendly description for the reason that will be displayed to the customer."
     %>
-    <%=
+    <%
       f.input :code,
         label: 'Internal return code',
         required: true,
         placeholder: 'Enter Internal return code...',
         hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
     %>
-    <%= f.input :active,
+    <% f.input :active,
       label: 'Reason is visible to customers'
     %>
-    <%= f.input :ordering,
+    <% f.input :ordering,
       label: 'Ordering',
       placeholder: 'Enter Ordering...',
       hint: "The order in which the reason will be displayed to the customer. Reasons with lower numbers will be displayed first."
     %>
 
     <button type="button" class="btn-danger" data-action="nested-form#removeAssociation">Remove</button>
-    <%= f.hidden_field :_destroy %>
+    <% f.hidden_field :_destroy %>
   </div>
-</div>
+</div>-->
+<li class="p-4 hover:bg-gray-100 hover:cursor-move justify-start items-center grow shrink gap-4 inline-flex w-full" data-sortable-target="item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none">
+    <g fill="#D9D9D9"> <path d="M8.25 12.833a1.833 1.833 0 1 0 0-3.667 1.833 1.833 0 0 0 0 3.667ZM13.75 12.833a1.833 1.833 0 1 0 0-3.667 1.833 1.833 0 0 0 0 3.667ZM8.25 6.417a1.833 1.833 0 1 0 0-3.667 1.833 1.833 0 0 0 0 3.667ZM13.75 6.417a1.833 1.833 0 1 0 0-3.667 1.833 1.833 0 0 0 0 3.667ZM8.25 19.25a1.833 1.833 0 1 0 0-3.666 1.833 1.833 0 0 0 0 3.667ZM13.75 19.25a1.833 1.833 0 1 0 0-3.666 1.833 1.833 0 0 0 0 3.667Z"/> </g>
+  </svg>
+  <% if f.object.active? %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#3164F6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></g></svg>
+  <% else %>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.494 18.494 0 0 1-2.16 3.19m-6.72-1.07a2.998 2.998 0 0 1-5.194-2.098A3 3 0 0 1 9.88 9.88M1 1l22 22"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>
+  <% end %>
+  <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><g stroke="#888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.494 18.494 0 0 1-2.16 3.19m-6.72-1.07a2.998 2.998 0 0 1-5.194-2.098A3 3 0 0 1 9.88 9.88M1 1l22 22"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>-->
+  <div class="font-semibold"><%= f.object.label %></div>
+  <div class="font-semibold"><%= f.object.ordering %></div>
+  <div class="font-semibold"><%= f.object.active %></div>
+  <div class="text-blue-600 text-base font-semibold leading-snug">
+    <%= link_to 'Edit', '#' %>
+  </div>
+</li>
