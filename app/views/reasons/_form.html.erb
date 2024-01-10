@@ -1,0 +1,43 @@
+<%= simple_form_for [reason.storefront, reason], data: { controller: 'nested-form', nested_form_index_value: 'NEW_RECORD' } do |form| %>
+  <% if reason.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(reason.errors.count, "error") %> prohibited this storefront from being saved:</h2>
+
+      <ul>
+        <% reason.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%=
+      form.input :label,
+        label: 'Displayed reason',
+        placeholder: 'Enter Displayed reason...',
+        hint: "Provide a friendly description for the reason that will be displayed to the customer."
+    %>
+    <%=
+      form.input :code,
+        label: 'Internal return code',
+        placeholder: 'Enter Internal return code...',
+        hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
+    %>
+    <%= form.input :active,
+      label: 'Reason is visible to customers',
+      hint: "When hidden, this return reason is not offered as an option to the customers. Click on the eye icon to make the return reason visible."
+    %>
+
+    <div class="w-full justify-between items-start inline-flex">
+      <div class="px-6 py-3 rounded-lg border-2 border-red-500 justify-center items-center gap-1 flex">
+        <div class="text-center text-red-500 text-sm font-bold leading-tight">Delete</div>
+      </div>
+      <div class="justify-end items-start gap-4 flex">
+        <div class="h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1 flex">
+          <div class="text-center text-black text-sm font-bold leading-tight"><%= form.submit 'Save' %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
