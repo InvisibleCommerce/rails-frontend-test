@@ -12,7 +12,11 @@
   <% end %>
 
   <div class="return-reason-container">
-    <ul class="divide-y divide-gray-300 overflow-hidden bg-gray-50 shadow-sm rounded-xl border">
+    <ul
+      class="divide-y divide-gray-300 overflow-hidden bg-gray-50 shadow-sm rounded-xl border"
+      data-action="dragstart->sortable#dragstart dragover->sortable#dragover dragend->sortable#dragend"
+      data-controller="sortable"
+      data-sortable-target="list" >
       <li>
         <%= link_to new_storefront_reason_path(@storefront, @storefront.reasons.new), data: { turbo_frame: 'modal' }, class: "p-4 justify-start items-center grow shrink gap-4 inline-flex w-full"  do %>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><circle cx="12" cy="12" r="12" fill="#3164F6"/><g fill="#fff"><path d="M17 10.998H7a1 1 0 0 0 0 2h10a1 1 0 1 0 0-2Z"/><path d="M11 7v10a1 1 0 1 0 2 0V7a1 1 0 1 0-2 0Z"/></g></svg>
