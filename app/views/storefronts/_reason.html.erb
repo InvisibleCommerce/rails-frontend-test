@@ -41,6 +41,6 @@
   <div class="font-semibold"><%= f.object.ordering %></div>
   <div class="font-semibold"><%= f.object.active %></div>
   <div class="text-blue-600 text-base font-semibold leading-snug">
-    <%= link_to 'Edit', edit_storefront_reason_path(@storefront, f.object) %>
+    <%= link_to 'Edit', edit_storefront_reason_path(@storefront, f.object), data: { turbo_frame: 'modal' } %>
   </div>
 </li>
