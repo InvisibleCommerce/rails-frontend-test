@@ -30,12 +30,18 @@
     %>
 
     <div class="w-full justify-between items-start inline-flex">
+      <% if reason.persisted? %>
       <div class="px-6 py-3 rounded-lg border-2 border-red-500 justify-center items-center gap-1 flex">
-        <div class="text-center text-red-500 text-sm font-bold leading-tight">Delete</div>
+        <div class="text-center text-red-500 text-sm font-bold leading-tight">
+          <%= link_to 'Delete', storefront_reason_path(reason.storefront, reason), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+        </div>
       </div>
+      <% else %>
+      <div>&nbsp;</div>
+      <% end %>
       <div class="justify-end items-start gap-4 flex">
         <div class="h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1 flex">
-          <div class="text-center text-black text-sm font-bold leading-tight"><%= form.submit 'Save' %></div>
+          <div class="text-center text-black text-sm font-bold leading-tight"><%= form.submit 'Continue' %></div>
         </div>
       </div>
     </div>
