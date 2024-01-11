@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :storefronts do
-    resources :reasons, only: %i[index show new create edit update]
+    resources :reasons
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

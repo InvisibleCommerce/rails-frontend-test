@@ -10,7 +10,7 @@ class ReasonsController < ApplicationController
 
     respond_to do |format|
       if @reason.save
-        format.html { redirect_to edit_storefront_url(@reason.storefront), notice: 'Reason was successfully created.' }
+        format.html { redirect_to [:edit, @reason.storefront], notice: 'Reason was successfully created.' }
         format.json { render :show, status: :created, location: @reason }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,6 +36,18 @@ class ReasonsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @reason.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @storefront = Storefront.find(params[:storefront_id])
+    @reason = @storefront.reasons.find(params[:id])
+
+    @reason.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to [:edit, @storefront], notice: "Reason was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 end
