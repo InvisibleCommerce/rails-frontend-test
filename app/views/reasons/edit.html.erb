@@ -1,5 +1,7 @@
-<h1 class="w-full text-black text-2xl font-bold leading-[33.60px] pb-4 border-b mb-6">Edit Return Reason</h1>
-<div class="mb-4">
-  <%= render "form", reason: @reason %>
-</div>
+<%= turbo_frame_tag 'modal' do %>
+  <h1 class="w-full text-black text-2xl font-bold leading-[33.60px] pb-4 border-b mb-6">Edit Return Reason</h1>
+  <div class="mb-4">
+    <%= render "form", reason: @reason %>
+  </div>
+<% end %>
 <%= link_to sanitize("&larr; Back to storefront"), edit_storefront_path(@storefront), class: 'mb-4' %>
