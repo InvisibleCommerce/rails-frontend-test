@@ -21,8 +21,9 @@
         <% end %>
       </template>
 
-      <button type="button" data-action="nested-form#addAssociation" class="btn">
-        <i class="add-icon"></i> Add Return Reason
+      <button type="button" data-action="nested-form#addAssociation" class="btn flex items-center text-blue-600">
+        <i class="fa-sharp fa-solid fa-circle-plus flex text-2xl"></i>
+        <span class="flex text-xl pl-6">Add Return Reason</span>
       </button>
       <%= form.simple_fields_for :reasons, @storefront.reasons.ordered do |reason_fields| %>
         <%= render 'reason', f: reason_fields %>

@@ -31,6 +31,9 @@ gem "jbuilder"
 
 gem 'simple_form'
 
+# FA gem for free icons
+gem "font-awesome-sass", "~> 6.5.1"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
