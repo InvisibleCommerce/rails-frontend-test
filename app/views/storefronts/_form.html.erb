@@ -26,9 +26,8 @@
         <i class="fa-sharp fa-solid fa-circle-plus text-2xl pr-6"></i>
         <span class="grow shrink basis-0 text-base font-semibold">Add Return Reason</span>
       </button>
-      <%= form.simple_fields_for :reasons, @storefront.reasons.ordered do |reason_fields| %>
-        <%= render 'reason', f: reason_fields %>
-      <% end %>
+
+      <%= render partial: 'reason', collection: @reasons %>
 
       <div hidden data-nested-form-target="addItem"></div>
     </div>

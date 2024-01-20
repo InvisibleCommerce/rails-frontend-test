@@ -1,0 +1,29 @@
+<div class="nested-form-wrapper">
+  <div class="dashboard-form-fields">
+    <%=
+      f.input :label,
+        label: 'Displayed reason',
+        required: true,
+        placeholder: 'Enter Displayed reason...',
+        hint: "Provide a friendly description for the reason that will be displayed to the customer."
+    %>
+    <%=
+      f.input :code,
+        label: 'Internal return code',
+        required: true,
+        placeholder: 'Enter Internal return code...',
+        hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
+    %>
+    <%= f.input :active,
+      label: 'Reason is visible to customers'
+    %>
+    <%= f.input :ordering,
+      label: 'Ordering',
+      placeholder: 'Enter Ordering...',
+      hint: "The order in which the reason will be displayed to the customer. Reasons with lower numbers will be displayed first."
+    %>
+
+    <button type="button" class="btn-danger" data-action="nested-form#removeAssociation">Remove</button>
+    <%= f.hidden_field :_destroy %>
+  </div>
+</div>

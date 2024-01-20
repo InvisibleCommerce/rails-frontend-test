@@ -1,29 +1,20 @@
-<div class="nested-form-wrapper">
-  <div class="dashboard-form-fields">
-    <%=
-      f.input :label,
-        label: 'Displayed reason',
-        required: true,
-        placeholder: 'Enter Displayed reason...',
-        hint: "Provide a friendly description for the reason that will be displayed to the customer."
-    %>
-    <%=
-      f.input :code,
-        label: 'Internal return code',
-        required: true,
-        placeholder: 'Enter Internal return code...',
-        hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
-    %>
-    <%= f.input :active,
-      label: 'Reason is visible to customers'
-    %>
-    <%= f.input :ordering,
-      label: 'Ordering',
-      placeholder: 'Enter Ordering...',
-      hint: "The order in which the reason will be displayed to the customer. Reasons with lower numbers will be displayed first."
-    %>
-
-    <button type="button" class="btn-danger" data-action="nested-form#removeAssociation">Remove</button>
-    <%= f.hidden_field :_destroy %>
+<% @reasons.each do |r| %>
+  <div class=" flex w-full h-14 p-4 justify-start items-start gap-6">
+    <i class="fa-sharp fa-solid fa-grip-vertical text-zinc-300"></i>
+    <div>
+      <% if r.active %>
+        <%= render partial: 'shared/eye' %>
+      <% else %>
+        <%= render partial: 'shared/eye_slash' %>
+      <% end %>
+    </div>
+    <div>
+      <%=
+        r.label
+      %>
+    </div>
+    <div class="text-blue-600 text-base font-semibold">
+      Edit
+    </div>
   </div>
-</div>
+<% end %>
