@@ -1,4 +1,4 @@
-<%= simple_form_for storefront, data: { controller: 'nested-form', nested_form_index_value: 'NEW_RECORD' } do |form| %>
+<%= simple_form_for storefront, html: { id: :storefront_form }, data: { controller: 'nested-form', nested_form_index_value: 'NEW_RECORD' } do |form| %>
   <% if storefront.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(storefront.errors.count, "error") %> prohibited this storefront from being saved:</h2>
@@ -21,7 +21,7 @@
         <% end %>
       </template>
 
-      <button type="button" data-action="nested-form#addAssociation" class="btn flex items-center text-blue-600">
+      <button type="button" data-action="nested-form#addAssociation" class="btn flex items-center bg-white text-blue-600">
         <i class="fa-sharp fa-solid fa-circle-plus flex text-2xl"></i>
         <span class="flex text-xl pl-6">Add Return Reason</span>
       </button>
@@ -30,15 +30,6 @@
       <% end %>
 
       <div hidden data-nested-form-target="addItem"></div>
-    </div>
-  </div>
-
-  <div>
-    <div>
-      Remember to save your changes before leaving this page
-    </div>
-    <div>
-      <%= form.submit 'Save', class: 'btn-primary' %>
     </div>
   </div>
 <% end %>
