@@ -57,6 +57,16 @@ class StorefrontsController < ApplicationController
     end
   end
 
+  def update_visibility
+    reason = Reason.find_by(code: params[:id])
+
+    reason.update(active: !reason.active)
+
+    respond_to do |format|
+      format.json { render json: { updated: true, active: reason.active } }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_storefront
