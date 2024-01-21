@@ -1,20 +1,25 @@
 <% @reasons.each do |r| %>
-  <div class="flex w-full h-14 p-4 justify-start items-start gap-6">
+  <div class="flex w-full h-14 p-4 justify-start items-start items-center gap-6">
     <i class="fa-sharp fa-solid fa-grip-vertical text-zinc-300"></i>
-    <div>
-      <% if r.active %>
-        <%= render partial: 'shared/eye' %>
-      <% else %>
-        <%= render partial: 'shared/eye_slash' %>
-      <% end %>
-    </div>
-    <div class="text-base font-semibold">
-      <%=
-        r.label
-      %>
+    <div class="w-[463px] h-6 justify-start items-center gap-4 inline-flex">
+      <div>
+        <% if r.active %>
+          <%= render partial: 'shared/eye' %>
+        <% else %>
+          <%= render partial: 'shared/eye_slash' %>
+        <% end %>
+      </div>
+      <div class="grow shrink basis-0 text-zinc-800 text-base font-semibold">
+        <%=
+          r.label
+        %>
+      </div>
     </div>
     <div class="text-blue-600 text-base font-semibold">
       Edit
     </div>
   </div>
+  <% if r != @reasons.last%>
+    <div class="border border-neutral-200"></div>
+  <% end %>
 <% end %>
