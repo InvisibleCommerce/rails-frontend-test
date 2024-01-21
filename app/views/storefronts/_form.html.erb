@@ -18,16 +18,16 @@
     >
       <template hidden data-nested-form-target="template">
         <%= form.simple_fields_for :reasons, Reason.new, child_index: 'NEW_RECORD' do |reason_fields| %>
-          <%= render 'reason', f: reason_fields %>
+          <%= render 'reason_edit', f: reason_fields %>
         <% end %>
       </template>
 
-      <button type="button" data-action="nested-form#addAssociation" class="btn flex items-center bg-white text-blue-600">
-        <i class="fa-sharp fa-solid fa-circle-plus text-2xl pr-6"></i>
-        <span class="grow shrink basis-0 text-base font-semibold">Add Return Reason</span>
+      <button type="button" data-action="nested-form#addAssociation" class="p-4 justify-start items-center gap-6 inline-flex">
+        <i class="fa-sharp fa-solid fa-circle-plus text-2xl text-blue-600"></i>
+        <span class="grow shrink basis-0 text-base font-semibold text-blue-600">Add Return Reason</span>
       </button>
 
-      <%= render partial: 'reason', collection: @reasons %>
+      <%= render partial: 'reason_list' %>
 
       <div hidden data-nested-form-target="addItem"></div>
     </div>
