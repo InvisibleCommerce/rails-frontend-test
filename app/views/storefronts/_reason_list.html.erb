@@ -1,15 +1,18 @@
 <% @reasons.each do |r| %>
-  <div data-controller="reason"
+  <div data-reason-id="<%= r.id %>"
        data-reason-target="reasonListItem"
+       data-action="dragstart->reason#startDrag drop->reason#drop dragover->reason#dragOver dragleave->reason#dragLeave"
+       draggable="true"
        class="flex w-full h-14 p-4 justify-start items-start items-center gap-6">
-    <i class="fa-sharp fa-solid fa-grip-vertical text-zinc-300"></i>
+    <i class="fa-sharp fa-solid fa-grip-vertical relative text-zinc-300 hover:cursor-grab"
+       data-action="mousedown->reason#grabHandle"></i>
     <div class="w-[463px] h-6 justify-start items-center gap-4 inline-flex">
       <%= button_tag type: 'button',
                      class: "visibility-toggle",
                      data: {
                        action: "click->reason#updateVisibility",
                        reason_target: "visibilityButton",
-                       reason_id: r.code
+                       reason_button_id: r.id
                      } do %>
         <div class=<%= r.active ? '' : 'hidden' %>>
           <%= render partial: 'shared/eye' %>
@@ -29,6 +32,6 @@
     </div>
   </div>
   <% if r != @reasons.last%>
-    <div class="border border-neutral-200"></div>
+    <div class="self-stretch h-px border border-neutral-200"></div>
   <% end %>
 <% end %>

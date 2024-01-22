@@ -58,12 +58,22 @@ class StorefrontsController < ApplicationController
   end
 
   def update_visibility
-    reason = Reason.find_by(code: params[:id])
+    reason = Reason.find_by(id: params[:id])
 
     reason.update(active: !reason.active)
 
     respond_to do |format|
       format.json { render json: { updated: true, active: reason.active } }
+    end
+  end
+
+  def update_order
+    reason = Reason.find_by(id: params[:id])
+
+    reason.update(ordering: params[:new_order])
+
+    respond_to do |format|
+      format.json { render json: { updated: true } }
     end
   end
 

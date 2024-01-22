@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "storefronts#edit", id: 1
+
+  put '/reasons/update_visibility/:id', to: 'storefronts#update_visibility'
+
+  put '/reasons/update_order/:id', to: 'storefronts#update_order'
 end

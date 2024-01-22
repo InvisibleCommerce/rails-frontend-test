@@ -27,9 +27,9 @@
         <span class="grow shrink basis-0 text-base font-semibold text-blue-600">Add Return Reason</span>
       </button>
       <div class="self-stretch h-px border border-neutral-200"></div>
-
-      <%= render partial: 'reason_list' %>
-
+      <div data-controller="reason">
+        <%= render partial: 'reason_list' %>
+      </div>
       <div hidden data-nested-form-target="addItem"></div>
     </div>
   </div>
