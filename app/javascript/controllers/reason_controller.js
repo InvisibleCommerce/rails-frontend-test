@@ -1,4 +1,4 @@
-import {Controller} from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
 const debounce = (func, wait, immediate) => {
   let timeout;

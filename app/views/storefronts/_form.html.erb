@@ -13,10 +13,8 @@
   <% end %>
 
   <div class="h-auto bg-gray-50 rounded-xl border border-neutral-200 justify-start items-center">
-    <div
-      class="return-reason-container "
-    >
-      <template hidden data-nested-form-target="template">
+    <div class="return-reason-container">
+      <template data-nested-form-target="template">
         <%= form.simple_fields_for :reasons, Reason.new, child_index: 'NEW_RECORD' do |reason_fields| %>
           <%= render 'reason_edit', f: reason_fields %>
         <% end %>
@@ -28,7 +26,7 @@
       </button>
       <div class="self-stretch h-px border border-neutral-200"></div>
       <div data-controller="reason">
-        <%= render partial: 'reason_list' %>
+        <%= render partial: 'reason_list', locals: { form: form } %>
       </div>
       <div hidden data-nested-form-target="addItem"></div>
     </div>

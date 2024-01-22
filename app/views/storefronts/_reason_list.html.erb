@@ -4,7 +4,7 @@
        data-action="dragstart->reason#startDrag drop->reason#drop dragover->reason#dragOver dragleave->reason#dragLeave"
        draggable="true"
        class="flex w-full h-14 p-4 justify-start items-start items-center gap-6 <%= r == @reasons.last ? '' : 'border-b border-neutral-200' %>">
-    <i class="fa-sharp fa-solid fa-grip-vertical relative text-zinc-300 hover:cursor-grab"
+    <i class="fa-sharp fa-solid fa-grip-vertical text-zinc-300 hover:cursor-grab"
        data-action="mousedown->reason#grabHandle"></i>
     <div class="w-[463px] h-6 justify-start items-center gap-4 inline-flex">
       <%= button_tag type: 'button',
@@ -27,8 +27,13 @@
         %>
       </div>
     </div>
-    <div class="text-blue-600 text-base font-semibold">
-      Edit
+    <div  data-controller="modal" data-action="keydown.esc->modal#close" tabindex="-1" draggable="false">
+      <a href="#" class="text-blue-600 text-base font-semibold" data-action="click->modal#open:prevent">
+        Edit
+      </a>
+      <%= form.simple_fields_for :reasons, r do |reason_fields| %>
+        <%= render 'reason_edit_modal', f: reason_fields %>
+      <% end %>
+      </div>
     </div>
-  </div>
 <% end %>

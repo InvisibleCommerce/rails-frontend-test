@@ -1,0 +1,41 @@
+
+<!-- Modal Background -->
+<div class="hidden fixed inset-0 bg-black bg-opacity-80 overflow-y-auto flex items-center justify-center"
+      data-modal-target="background"
+      data-action="click->modal#closeBackground"
+      data-transition-enter="transition-all ease-in-out duration-300"
+      data-transition-enter-from="bg-opacity-0"
+      data-transition-enter-to="bg-opacity-80"
+      data-transition-leave="transition-all ease-in-out duration-300"
+      data-transition-leave-from="bg-opacity-80"
+      data-transition-leave-to="bg-opacity-0">
+  <!-- Modal Container -->
+  <div data-modal-target="container" class="max-h-screen w-full max-w-lg relative">
+    <div class="w-[720px] h-[522px] p-4 bg-white rounded-2xl flex-col justify-start items-end gap-6 relative z-10">
+      <%=
+        f.input :label,
+          label: 'Displayed reason',
+          required: true,
+          placeholder: 'Enter Displayed reason...',
+          hint: "Provide a friendly description for the reason that will be displayed to the customer."
+      %>
+      <%=
+        f.input :code,
+          label: 'Internal return code',
+          required: true,
+          placeholder: 'Enter Internal return code...',
+          hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
+      %>
+      <%= f.input :active,
+        label: 'Reason is visible to customers'
+      %>
+      <%= f.input :ordering,
+        label: 'Ordering',
+        placeholder: 'Enter Ordering...',
+        hint: "The order in which the reason will be displayed to the customer. Reasons with lower numbers will be displayed first."
+      %>
+      <button type="button" class="btn-danger" data-action="click->modal#close">Remove</button>
+      <%= f.hidden_field :_destroy %>
+    </div>
+  </div>
+</div>
