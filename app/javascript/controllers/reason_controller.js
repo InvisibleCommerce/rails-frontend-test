@@ -71,16 +71,18 @@ export default class extends Controller {
   }
 
   updateOrder() {
+    let newListOrder = []
     this.reasonListItemTargets.forEach((item, index) => {
-      const reasonId = item.dataset.reasonId;
-      fetch(`/reasons/update_order/${reasonId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': document.querySelector("[name='csrf-token']").content
-        },
-        body: JSON.stringify({new_order: index})
-      });
+      newListOrder.push({[item.dataset.reasonId]: index})
+    });
+
+    fetch(`/reasons/update_order`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector("[name='csrf-token']").content
+      },
+      body: JSON.stringify({new_order: newListOrder})
     });
   }
 

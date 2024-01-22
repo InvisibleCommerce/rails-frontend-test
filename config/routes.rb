@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   put '/reasons/update_visibility/:id', to: 'storefronts#update_visibility'
 
-  put '/reasons/update_order/:id', to: 'storefronts#update_order'
+  put '/reasons/update_order', to: 'storefronts#update_order'
 end

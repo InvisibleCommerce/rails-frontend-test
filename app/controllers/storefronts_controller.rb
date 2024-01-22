@@ -68,9 +68,11 @@ class StorefrontsController < ApplicationController
   end
 
   def update_order
-    reason = Reason.find_by(id: params[:id])
-
-    reason.update(ordering: params[:new_order])
+    params[:new_order].each do |o|
+      id_key = o.keys[0]
+      reason = Reason.find_by(id: id_key)
+      reason.update(ordering: o[id_key])
+    end
 
     respond_to do |format|
       format.json { render json: { updated: true } }
