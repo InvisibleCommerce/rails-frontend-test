@@ -3,7 +3,7 @@
        data-reason-target="reasonListItem"
        data-action="dragstart->reason#startDrag drop->reason#drop dragover->reason#dragOver dragleave->reason#dragLeave"
        draggable="true"
-       class="flex w-full h-14 p-4 justify-start items-start items-center gap-6">
+       class="flex w-full h-14 p-4 justify-start items-start items-center gap-6 <%= r == @reasons.last ? '' : 'border-b border-neutral-200' %>">
     <i class="fa-sharp fa-solid fa-grip-vertical relative text-zinc-300 hover:cursor-grab"
        data-action="mousedown->reason#grabHandle"></i>
     <div class="w-[463px] h-6 justify-start items-center gap-4 inline-flex">
@@ -31,7 +31,4 @@
       Edit
     </div>
   </div>
-  <% if r != @reasons.last%>
-    <div class="self-stretch h-px border border-neutral-200"></div>
-  <% end %>
 <% end %>

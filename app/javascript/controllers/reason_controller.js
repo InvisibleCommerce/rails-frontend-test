@@ -28,7 +28,7 @@ export default class extends Controller {
   }
 
   startDrag(event) {
-    event.currentTarget.classList.add('opacity-75');
+    event.currentTarget.classList.add('border-2','border-dashed', 'border-neutral-200');
     event.dataTransfer.setData("text", event.currentTarget.dataset.reasonId);
     event.dataTransfer.effectAllowed = 'move';
   }
@@ -58,7 +58,7 @@ export default class extends Controller {
     const draggedElement = document.querySelector(`[data-reason-id="${draggedReasonId}"]`);
 
     if (draggedElement) {
-      draggedElement.classList.remove('opacity-75');
+      draggedElement.classList.remove('border-2','border-dashed', 'border-neutral-200');
       const dropTarget = event.target.closest('[data-reason-target="reasonListItem"]');
 
       if (dropTarget && dropTarget !== draggedElement) {
@@ -66,6 +66,8 @@ export default class extends Controller {
         this.updateOrder();
       }
     }
+
+    event.dataTransfer.clearData();
   }
 
   updateOrder() {
