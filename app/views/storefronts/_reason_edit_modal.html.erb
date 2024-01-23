@@ -7,7 +7,7 @@
       data-transition-leave-from="bg-opacity-80"
       data-transition-leave-to="bg-opacity-0">
   <div data-modal-target="container" class="flex max-h-screen w-full max-w-lg relative">
-    <div class="flex w-[720px] h-[522px] p-4 bg-white rounded-2xl flex-col gap-6 relative z-10">
+    <div class="flex w-[720px] h-[522px] p-4 bg-white rounded-2xl flex-col gap-6 items-end relative z-10">
       <div class="flex w-[688px] h-[50px] justify-between items-center pb-4 border-b border-zinc-200">
         <div class="text-black text-2xl font-bold">Edit Return Reason</div>
         <div class="h-8 w-8 justify-center items-center hover:text-zinc-700 active:text-zinc-800" data-action="click->modal#close">
@@ -28,7 +28,7 @@
           Provide a friendly description for the reason that will be displayed to the customer.
         </div>
       </div>
-      <div class="flex w-[688px] h-[106px] flex-col justify-start items-start gap-2">
+      <div class="flex w-[688px] h-[126px] self-stretch flex-col justify-start items-start gap-2">
         <div class="self-stretch text-base font-semibold">Internal return code</div>
         <%=
           f.input :code,
@@ -38,7 +38,7 @@
             required: true,
             placeholder: 'Enter Internal return code...'
         %>
-        <div class="text-zinc-800 text-sm font-normal">
+        <div class="w-[544px] text-zinc-800 text-sm font-normal leading-tight">
           For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set.
         </div>
       </div>
@@ -62,12 +62,14 @@
           <div class="modal-visibility-header-active ext-zinc-800 text-base font-semibold <%= r.active ? '' : 'hidden' %>">Return Reason is Visible</div>
           <div class="modal-visibility-header-inactive ext-zinc-800 text-base font-semibold <%= r.active ? 'hidden' : '' %>">Return Reason is Hidden</div>
         </div>
-        <div class="text-zinc-800 text-sm font-normal">
-          When hidden, this return reason is not offered as an option to the customers.
-          Click on the eye icon to make the return reason visible.
+        <div class="self-stretch px-9 justify-start items-start gap-2 inline-flex">
+          <div class="w-[616px] text-zinc-800 text-sm font-normal">
+            When hidden, this return reason is not offered as an option to the customers.
+            Click on the eye icon to make the return reason visible.
+          </div>
         </div>
       </div>
-      <div class="w-[688px] h-11 justify-between items-start inline-flex">
+      <div class="flex w-[688px] h-11 justify-between items-start">
         <button type="button"
                 class="flex w-[95px] h-11 px-6 py-3 rounded-lg border-2 border-red-500 justify-center items-center gap-1"
                 data-action="click->modal#close">
@@ -75,7 +77,8 @@
         </button>
         <%= f.hidden_field :_destroy %>
         <button type="button"
-                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1">
+                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1"
+                data-action="click->modal#close">
           <span class="text-center text-black text-sm font-bold">Continue</span>
         </button>
       </div>
