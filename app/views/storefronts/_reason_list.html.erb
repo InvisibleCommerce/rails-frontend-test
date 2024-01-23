@@ -32,7 +32,7 @@
         Edit
       </a>
       <%= form.simple_fields_for :reasons, r do |reason_fields| %>
-        <%= render 'reason_edit_modal', f: reason_fields %>
+        <%= render 'reason_edit_modal', f: reason_fields, r: r %>
       <% end %>
       </div>
     </div>

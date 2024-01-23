@@ -88,10 +88,70 @@ export default class extends Controller {
     });
   }
 
+  toggleElementVisibility(elements) {
+    elements.forEach(e => {
+      e.classList.toggle("hidden");
+    });
+  }
+
+  setModalVisibilityStyle(button, active) {
+    const reasonListItem = button.closest('[data-reason-target="reasonListItem"]');
+    const activeHeader = button.parentElement.querySelector(".modal-visibility-header-active")
+    const inactiveHeader = button.parentElement.querySelector(".modal-visibility-header-inactive")
+    const reasonListItemButton = reasonListItem.querySelector('.visibility-toggle')
+
+    this.toggleElementVisibility(reasonListItemButton.querySelectorAll("div"))
+
+    if (active) {
+      activeHeader.classList.remove("hidden");
+      inactiveHeader.classList.add("hidden");
+      reasonListItemButton.nextElementSibling.classList.add("text-zinc-800");
+      reasonListItemButton.nextElementSibling.classList.remove("text-zinc-500");
+    } else {
+      activeHeader.classList.add("hidden");
+      inactiveHeader.classList.remove("hidden");
+      reasonListItemButton.nextElementSibling.classList.remove("text-zinc-800");
+      reasonListItemButton.nextElementSibling.classList.add("text-zinc-500");
+    }
+  }
+
+  setListItemVisibilityStyle(button, active) {
+    const reasonListItem = button.closest('[data-reason-target="reasonListItem"]');
+    const activeHeader = reasonListItem.querySelector(".modal-visibility-header-active")
+    const inactiveHeader = reasonListItem.querySelector(".modal-visibility-header-inactive")
+    const reasonModalButton = reasonListItem.querySelector('.modal-visibility-toggle')
+
+    this.toggleElementVisibility(reasonModalButton.querySelectorAll("div"))
+
+    if (active) {
+      activeHeader.classList.remove("hidden");
+      inactiveHeader.classList.add("hidden");
+      button.nextElementSibling.classList.add("text-zinc-800");
+      button.nextElementSibling.classList.remove("text-zinc-500");
+    } else {
+      activeHeader.classList.add("hidden");
+      inactiveHeader.classList.remove("hidden");
+      button.nextElementSibling.classList.remove("text-zinc-800");
+      button.nextElementSibling.classList.add("text-zinc-500");
+    }
+  }
+
+  setVisibilityStyling(button, active, isModal) {
+    const buttonChildren = button.querySelectorAll("div");
+
+    this.toggleElementVisibility(buttonChildren)
+
+    if (isModal) {
+      this.setModalVisibilityStyle(button, active)
+    } else {
+      this.setListItemVisibilityStyle(button, active)
+    }
+  }
+
   updateVisibility(event) {
     const buttonElement = event.currentTarget;
     const reasonId = buttonElement.dataset.reasonButtonId;
-    const nextSibling = buttonElement.nextElementSibling;
+    const isModal = buttonElement.dataset.isModal
 
     fetch(`/reasons/update_visibility/${reasonId}`, {
       method: 'PUT',
@@ -104,18 +164,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then(data => {
         if (data.updated) {
-          const childDivs = buttonElement.querySelectorAll("div");
-          childDivs.forEach(div => {
-            div.classList.toggle("hidden");
-          });
-
-          if (data.active) {
-            nextSibling.classList.add("text-zinc-800");
-            nextSibling.classList.remove("text-zinc-500");
-          } else {
-            nextSibling.classList.add("text-zinc-500");
-            nextSibling.classList.remove("text-zinc-800");
-          }
+          this.setVisibilityStyling(buttonElement, data.active, isModal)
         }
       });
   }
