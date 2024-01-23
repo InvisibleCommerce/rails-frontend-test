@@ -28,7 +28,7 @@
       </div>
     </div>
     <div  data-controller="modal" data-action="keydown.esc->modal#close" tabindex="-1" draggable="false">
-      <a href="#" class="text-blue-600 text-base font-semibold" data-action="click->modal#open:prevent">
+      <a href="#" class="text-blue-600 hover:text-blue-700 active:text-blue-800 text-base font-semibold" data-action="click->modal#open:prevent">
         Edit
       </a>
       <%= form.simple_fields_for :reasons, r do |reason_fields| %>

@@ -1,5 +1,3 @@
-
-<!-- Modal Background -->
 <div class="hidden fixed inset-0 bg-black bg-opacity-80 overflow-y-auto flex items-center justify-center"
       data-modal-target="background"
       data-action="click->modal#closeBackground"
@@ -9,33 +7,65 @@
       data-transition-leave="transition-all ease-in-out duration-300"
       data-transition-leave-from="bg-opacity-80"
       data-transition-leave-to="bg-opacity-0">
-  <!-- Modal Container -->
-  <div data-modal-target="container" class="max-h-screen w-full max-w-lg relative">
-    <div class="w-[720px] h-[522px] p-4 bg-white rounded-2xl flex-col justify-start items-end gap-6 relative z-10">
-      <%=
-        f.input :label,
-          label: 'Displayed reason',
-          required: true,
-          placeholder: 'Enter Displayed reason...',
-          hint: "Provide a friendly description for the reason that will be displayed to the customer."
-      %>
-      <%=
-        f.input :code,
-          label: 'Internal return code',
-          required: true,
-          placeholder: 'Enter Internal return code...',
-          hint: "For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set."
-      %>
-      <%= f.input :active,
-        label: 'Reason is visible to customers'
-      %>
-      <%= f.input :ordering,
-        label: 'Ordering',
-        placeholder: 'Enter Ordering...',
-        hint: "The order in which the reason will be displayed to the customer. Reasons with lower numbers will be displayed first."
-      %>
-      <button type="button" class="btn-danger" data-action="click->modal#close">Remove</button>
-      <%= f.hidden_field :_destroy %>
+  <div data-modal-target="container" class="flex max-h-screen w-full max-w-lg relative">
+    <div class="flex w-[720px] h-[522px] p-4 bg-white rounded-2xl flex-col gap-6 relative z-10">
+      <div class="flex w-[688px] h-[50px] justify-between items-center pb-4 border-b border-zinc-200">
+        <div class="text-black text-2xl font-bold">Edit Return Reason</div>
+        <div class="h-8 w-8 justify-center items-center hover:text-zinc-700 active:text-zinc-800" data-action="click->modal#close">
+          <i class="flex fa-solid fa-x h-4 w-4"></i>
+        </div>
+      </div>
+      <div class="flex w-[688px] h-[106px] flex-col justify-start items-start gap-2">
+        <div class="text-zinc-800 text-base font-semibold">Displayed reason</div>
+        <%=
+          f.input :label,
+            input_html: { class: 'w-[688px] h-[47px] px-4 py-3 bg-gray-50 rounded-xl border border-neutral-200 justify-start items-start gap-2.5' },
+            label: false,
+            required: true,
+            placeholder: 'Enter Displayed reason...'
+        %>
+        <div class="text-zinc-800 text-sm font-normal">
+          Provide a friendly description for the reason that will be displayed to the customer.
+        </div>
+      </div>
+      <div class="flex w-[688px] h-[106px] flex-col justify-start items-start gap-2">
+        <div class="ext-zinc-800 text-base font-semibold">Internal return code</div>
+        <%=
+          f.input :code,
+            input_html: { class: 'w-[688px] h-[47px] px-4 py-3 bg-gray-50 rounded-xl border border-neutral-200 justify-start items-start gap-2.5' },
+            label: false,
+            required: true,
+            placeholder: 'Enter Internal return code...'
+        %>
+        <div class="text-zinc-800 text-sm font-normal">
+          For internal use only. Must be unique. To aid in analytics, we do not recommend changing the code once set.
+        </div>
+      </div>
+      <div class="w-[688px] h-[68px] flex-col justify-start items-start gap-1">
+        <div class="w-[688px] self-stretch justify-start items-center gap-3">
+          <%= f.input :active,
+            input_html: { class: 'w-6 h-6 relative' },
+            label: false
+          %>
+          <div class="ext-zinc-800 text-base font-semibold">Return Reason is Hidden</div>
+        </div>
+        <div class="text-zinc-800 text-sm font-normal">
+          When hidden, this return reason is not offered as an option to the customers.
+          Click on the eye icon to make the return reason visible.
+        </div>
+      </div>
+      <div class="w-[688px] h-11 justify-between items-start inline-flex">
+        <button type="button"
+                class="flex w-[95px] h-11 px-6 py-3 rounded-lg border-2 border-red-500 justify-center items-center gap-1"
+                data-action="click->modal#close">
+          <span class="text-center text-red-500 text-sm font-bold">Delete</span>
+        </button>
+        <%= f.hidden_field :_destroy %>
+        <button type="button"
+                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1">
+          <span class="text-center text-black text-sm font-bold">Continue</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
