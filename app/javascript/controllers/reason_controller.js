@@ -168,4 +168,14 @@ export default class extends Controller {
         }
       });
   }
+
+  deleteReason(event) {
+    const deleteButton = event.currentTarget
+    const destroyInput = deleteButton.nextElementSibling
+    const reasonListItem = deleteButton.closest('[data-reason-target="reasonListItem"]');
+
+    destroyInput.value = 1
+
+    reasonListItem.classList.add('bg-red-300')
+  }
 }

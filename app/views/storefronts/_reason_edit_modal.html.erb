@@ -71,13 +71,13 @@
       </div>
       <div class="flex w-[688px] h-11 justify-between items-start">
         <button type="button"
-                class="flex w-[95px] h-11 px-6 py-3 rounded-lg border-2 border-red-500 justify-center items-center gap-1"
-                data-action="click->modal#close">
-          <span class="text-center text-red-500 text-sm font-bold">Delete</span>
+                class="flex w-[95px] h-11 px-6 py-3 rounded-lg border-2 border-red-500 hover:border-red-600 active:bg-red-700 text-red-500 active:text-white justify-center items-center gap-1"
+                data-action="click->modal#close click->reason#deleteReason">
+          <span class="text-center text-sm font-bold">Delete</span>
         </button>
         <%= f.hidden_field :_destroy %>
         <button type="button"
-                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 rounded-lg justify-center items-center gap-1"
+                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 hover:bg-amber-500 active:bg-amber-600 rounded-lg justify-center items-center gap-1"
                 data-action="click->modal#close">
           <span class="text-center text-black text-sm font-bold">Continue</span>
         </button>
