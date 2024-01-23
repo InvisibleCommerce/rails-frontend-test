@@ -186,7 +186,9 @@ export default class extends Controller {
     const reasonListItem = continueButton.closest('[data-reason-target="reasonListItem"]');
     const listItemLabel = reasonListItem.querySelector(".list-item-label")
 
-    reasonListItem.classList.add("bg-sky-200")
-    listItemLabel.textContent = labelInput.value
+    if (labelInput.value !== labelInput.defaultValue) {
+      reasonListItem.classList.add("bg-sky-200")
+      listItemLabel.textContent = labelInput.value
+    }
   }
 }
