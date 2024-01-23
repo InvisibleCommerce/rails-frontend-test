@@ -176,6 +176,17 @@ export default class extends Controller {
 
     destroyInput.value = 1
 
-    reasonListItem.classList.add('bg-red-300')
+    reasonListItem.classList.add('bg-red-200')
+  }
+
+  continueEdit(event) {
+    const continueButton = event.currentTarget
+    const reasonId = continueButton.dataset.reasonId
+    const labelInput = document.querySelector(`input[data-reason-id="${reasonId}"]`)
+    const reasonListItem = continueButton.closest('[data-reason-target="reasonListItem"]');
+    const listItemLabel = reasonListItem.querySelector(".list-item-label")
+
+    reasonListItem.classList.add("bg-sky-200")
+    listItemLabel.textContent = labelInput.value
   }
 }

@@ -21,19 +21,19 @@
           <%= render partial: 'shared/eye_slash' %>
         </div>
       <% end %>
-      <div class="grow shrink basis-0 text-base font-semibold <%=r.active ? 'text-zinc-800' : 'text-zinc-500'%>">
+      <div class="list-item-label grow shrink basis-0 text-base font-semibold <%= r.active ? 'text-zinc-800' : 'text-zinc-500' %>">
         <%=
           r.label
         %>
       </div>
     </div>
-    <div  data-controller="modal" data-action="keydown.esc->modal#close" tabindex="-1" draggable="false">
+    <div data-controller="modal" data-action="keydown.esc->modal#close" tabindex="-1" draggable="false">
       <a href="#" class="text-blue-600 hover:text-blue-700 active:text-blue-800 text-base font-semibold" data-action="click->modal#open:prevent">
         Edit
       </a>
       <%= form.simple_fields_for :reasons, r do |reason_fields| %>
         <%= render 'reason_edit_modal', f: reason_fields, r: r %>
       <% end %>
-      </div>
     </div>
+  </div>
 <% end %>
