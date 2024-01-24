@@ -191,4 +191,9 @@ export default class extends Controller {
       listItemLabel.textContent = labelInput.value
     }
   }
+
+  createReason() {
+    const form = document.querySelector("#storefront_form")
+    form.submit()
+  }
 }

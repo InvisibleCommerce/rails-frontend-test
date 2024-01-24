@@ -83,10 +83,16 @@
         </button>
         <%= f.hidden_field :_destroy %>
         <button type="button"
-                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 hover:bg-amber-500 active:bg-amber-600 rounded-lg justify-center items-center gap-1"
+                class="flex w-[95px] h-11 px-6 py-3 bg-amber-400 hover:bg-amber-500 active:bg-amber-600 rounded-lg justify-center items-center gap-1 <%= r.persisted? ? '' : 'hidden' %>"
                 data-action="click->modal#close click->reason#continueEdit"
                 data-reason-id=<%= r.id %>>
           <span class="text-center text-black text-sm font-bold">Continue</span>
+        </button>
+        <button type="button"
+                class="flex w-[95px] h-11 px-6 py-3 bg-green-400 hover:bg-green-500 active:bg-green-600 rounded-lg justify-center items-center gap-1 <%= r.persisted? ? 'hidden' : '' %>"
+                data-action="click->reason#createReason click->modal#close"
+                data-reason-id=<%= r.id %>>
+          <span class="text-center text-black text-sm font-bold">Create</span>
         </button>
       </div>
     </div>
